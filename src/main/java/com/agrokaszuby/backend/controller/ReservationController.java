@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/agrokaszuby/backend")
+@RequestMapping("/agrokaszuby/backend/reservation")
 public class ReservationController {
     
     private final ReservationDBService service;
@@ -23,6 +23,12 @@ public class ReservationController {
     @GetMapping
     public ResponseEntity<List<ReservationDTO>> getReservations() {
         List<Reservation> reservations = service.getAllReservations();
+        return ResponseEntity.ok(mapper.mapToReservationDtoList(reservations));
+    }
+
+    @GetMapping(value = "/byemail/{email}")
+    public ResponseEntity<List<ReservationDTO>> getReservationsForClientByEmail(@PathVariable String email) {
+        List<Reservation> reservations = service.getAllReservationsForClientByEmail(email);
         return ResponseEntity.ok(mapper.mapToReservationDtoList(reservations));
     }
 

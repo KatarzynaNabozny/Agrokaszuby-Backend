@@ -4,41 +4,41 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Entity(name = "reservation")
+@Entity(name = "RESERVATION")
 public class Reservation {
 
     @Id
     @GeneratedValue
+    @Column(name = "RESERVATION_ID", unique = true)
     private Long reservationId;
 
-    @Column
+    @Column(name = "START_DATE")
     private LocalDateTime startDate;
-    @Column
+    @Column(name = "END_DATE")
     private LocalDateTime endDate;
-    @Column
-    private String firstName;
-    @Column
-    private String lastName;
-    @Column
-    private String phoneNumber;
-    @Column
+
+    @Column(name = "CITY")
     private String city;
-    @Column
-    private String postalCode;
-    @Column
+    @Column(name = "STREET")
     private String street;
-    @Column
-    private String email;
+    @Column(name = "POSTAL_CODE")
+    private String postalCode;
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "ReservationHasCustomers",
+            joinColumns = {@JoinColumn(name = "RESERVATION_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "CUSTOMER_ID")}
+    )
+    private List<Customer> customerInTheReservation = new ArrayList<>();
 
 }
 

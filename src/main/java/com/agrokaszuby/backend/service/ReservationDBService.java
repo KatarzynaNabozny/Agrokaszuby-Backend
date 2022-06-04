@@ -18,6 +18,10 @@ public class ReservationDBService {
         return repository.findAll();
     }
 
+    public List<Reservation> getAllReservationsForClientByEmail(String email) {
+        return repository.findAllReservationsByCustomerEmail(email).stream().toList();
+    }
+
     public Reservation getReservation(final Long reservationId) throws ReservationNotFoundException {
         return repository.findById(reservationId).orElseThrow(ReservationNotFoundException::new);
     }
