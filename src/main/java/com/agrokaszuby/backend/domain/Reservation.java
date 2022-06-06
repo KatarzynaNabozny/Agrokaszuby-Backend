@@ -1,10 +1,12 @@
 package com.agrokaszuby.backend.domain;
 
+import com.agrokaszuby.backend.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,11 @@ public class Reservation {
     private String street;
     @Column(name = "POSTAL_CODE")
     private String postalCode;
+
+    @Column(name = "CURRENCY")
+    private String currency;
+    @Column(name = "PRICE")
+    private BigDecimal price;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "ReservationHasCustomers",

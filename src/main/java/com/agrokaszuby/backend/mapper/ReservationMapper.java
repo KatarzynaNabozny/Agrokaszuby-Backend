@@ -1,5 +1,6 @@
 package com.agrokaszuby.backend.mapper;
 
+import com.agrokaszuby.backend.Currency;
 import com.agrokaszuby.backend.domain.Customer;
 import com.agrokaszuby.backend.domain.Reservation;
 import com.agrokaszuby.backend.domain.dto.ReservationDTO;
@@ -28,13 +29,15 @@ public class ReservationMapper {
                 reservationDTO.getCity(),
                 reservationDTO.getStreet(),
                 reservationDTO.getPostalCode(),
+                reservationDTO.getCurrency().name(),
+                reservationDTO.getPrice(),
                 customers
         );
     }
 
     public ReservationDTO mapToReservationDTO(final Reservation reservation) {
-
-        Customer customer = reservation.getCustomerInTheReservation().stream().findFirst().get();
+        Customer customer = reservation.getCustomerInTheReservation()
+                .stream().findFirst().get();
 
         return new ReservationDTO(
                 reservation.getReservationId(),
@@ -46,9 +49,12 @@ public class ReservationMapper {
                 reservation.getCity(),
                 reservation.getPostalCode(),
                 reservation.getStreet(),
-                customer.getEmail()
+                customer.getEmail(),
+                Currency.valueOf(reservation.getCurrency()),
+                reservation.getPrice()
         );
     }
+
     public List<ReservationDTO> mapToReservationDtoList(final List<Reservation> reservationList) {
         return reservationList.stream()
                 .map(this::mapToReservationDTO)
