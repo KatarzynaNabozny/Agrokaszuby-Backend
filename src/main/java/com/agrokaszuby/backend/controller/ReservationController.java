@@ -6,17 +6,19 @@ import com.agrokaszuby.backend.exception.ReservationNotFoundException;
 import com.agrokaszuby.backend.mapper.ReservationMapper;
 import com.agrokaszuby.backend.service.ReservationDBService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/agrokaszuby/backend/reservation")
 public class ReservationController {
-    
+
     private final ReservationDBService service;
     private final ReservationMapper mapper;
 
@@ -55,6 +57,16 @@ public class ReservationController {
     @DeleteMapping(value = "/{reservationId}")
     public ResponseEntity<Void> deleteReservation(@PathVariable Long reservationId) throws ReservationNotFoundException {
         service.deleteReservation(reservationId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteReservationByEmailAndStartDateAndEndDate(
+            @RequestParam String email,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate)
+            throws ReservationNotFoundException {
+        service.deleteReservationByEmailAndStartAndEndDate(email, startDate, endDate);
         return ResponseEntity.ok().build();
     }
 }
