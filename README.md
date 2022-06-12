@@ -5,3 +5,6 @@
 * **F2** - Related tables
 * **F3** - Weather API - Forecast for seven days
 * **F4** - Currency exchange API - Add Price with PLN and USD
+* **F5** - Reservation form validation
+* **F6** - Design patterns
+* **F7** - Email service for reservation
