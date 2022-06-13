@@ -40,7 +40,7 @@ public class Reservation {
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "ReservationHasCustomers",
             joinColumns = {@JoinColumn(name = "RESERVATION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "CUSTOMER_ID")}

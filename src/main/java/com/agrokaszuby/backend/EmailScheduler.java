@@ -1,4 +1,4 @@
-package com.agrokaszuby.backend.scheduler;
+package com.agrokaszuby.backend;
 
 import com.agrokaszuby.backend.config.AdminConfig;
 import com.agrokaszuby.backend.domain.Mail;
@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableScheduling
@@ -20,7 +19,7 @@ public class EmailScheduler {
     private final SimpleEmailService simpleEmailService;
     private final AdminConfig adminConfig;
 
-    @Scheduled(cron = "15 0 * * * *")
+    @Scheduled(cron = "* * 10 * * *")
     public void sendInformationEmail() {
         simpleEmailService.send(
                 Mail.builder()
@@ -32,5 +31,4 @@ public class EmailScheduler {
                         .build()
         );
     }
-
 }

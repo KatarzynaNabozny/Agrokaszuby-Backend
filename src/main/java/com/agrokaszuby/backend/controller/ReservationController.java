@@ -4,7 +4,6 @@ import com.agrokaszuby.backend.domain.Reservation;
 import com.agrokaszuby.backend.domain.dto.ReservationDTO;
 import com.agrokaszuby.backend.exception.ReservationNotFoundException;
 import com.agrokaszuby.backend.mapper.ReservationMapper;
-import com.agrokaszuby.backend.service.ReservationEmailService;
 import com.agrokaszuby.backend.service.ReservationDBService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,8 +21,6 @@ public class ReservationController {
 
     private final ReservationDBService service;
     private final ReservationMapper mapper;
-    private final ReservationEmailService emailService;
-
 
     @GetMapping
     public ResponseEntity<List<ReservationDTO>> getReservations() {
@@ -46,11 +43,8 @@ public class ReservationController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createReservation(@RequestBody ReservationDTO reservationDTO) {
         Reservation reservation = mapper.mapToReservation(reservationDTO);
-        Reservation savedReservation = service.saveReservation(reservation);
+        service.saveReservation(reservation);
 
-        if (savedReservation != null) {
-            emailService.sendInformationEmail(reservationDTO);
-        }
         return ResponseEntity.ok().build();
     }
 

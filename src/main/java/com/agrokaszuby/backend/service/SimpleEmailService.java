@@ -21,20 +21,20 @@ public class SimpleEmailService {
     @Autowired
     private MailCreatorService mailCreatorService;
 
-    private MimeMessagePreparator createMessage(final Mail mail, ReservationDTO reservation) {
+    private MimeMessagePreparator createMessage(final Mail mail) {
         return mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setFrom(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildReservationEmail(mail.getMessage(), reservation), true);
+            messageHelper.setText(mailCreatorService.buildReservationEmail(mail.getMessage()), true);
         };
     }
 
-    public void sendReservationInfo(final Mail mail, ReservationDTO reservation) {
+    public void send(final Mail mail) {
         log.info("RESERVATION INFO - Starting email preparation...");
         try {
-            javaMailSender.send(createMessage(mail, reservation));
+            javaMailSender.send(createMessage(mail));
             log.info("RESERVATION INFO - Email has been sent.");
         } catch (MailException e) {
             log.error("RESERVATION INFO - Failed to process email sending: " + e.getMessage(), e);
