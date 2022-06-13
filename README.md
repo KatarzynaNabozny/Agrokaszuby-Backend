@@ -66,6 +66,11 @@ DELETE http://localhost:8090/agrokaszuby/backend/reservation?email=kodilla.katar
 ```
 11. Update currency exchange: PUT http://localhost:8090/agrokaszuby/backend/currency_exchange
 12. Delete currency exchange by id: DELETE http://localhost:8090/agrokaszuby/backend/currency_exchange/{id}
+13. Get currency exchange by fromCurrency: GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/from_currency?fromCurrency=PLN
+14. Get currency exchange by toCurrency: GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/to_currency?toCurrency=USD
+15. Get currency exchange by date: GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/date?date=2022-10-26
+16. Get currency exchange by fromCurrency, toCurrency and date: \
+GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/from_to_currency_date?fromCurrency=PLN&toCurrency=USD&date=2022-10-26
 
 ## 3. SCHEDULER (Sending all reservations report F7)
 Here is how this report looks like on the mailbox:
