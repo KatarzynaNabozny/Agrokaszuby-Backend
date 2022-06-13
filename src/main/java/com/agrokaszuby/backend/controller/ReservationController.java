@@ -28,16 +28,16 @@ public class ReservationController {
         return ResponseEntity.ok(mapper.mapToReservationDtoList(reservations));
     }
 
-    @GetMapping(value = "/byemail/{email}")
-    public ResponseEntity<List<ReservationDTO>> getReservationsForClientByEmail(@PathVariable String email) {
-        List<Reservation> reservations = service.getAllReservationsForClientByEmail(email);
-        return ResponseEntity.ok(mapper.mapToReservationDtoList(reservations));
-    }
-
     @GetMapping(value = "/{reservationId}")
     public ResponseEntity<ReservationDTO> getReservation(@PathVariable Long reservationId) throws ReservationNotFoundException {
         return ResponseEntity.ok(mapper.mapToReservationDTO(
                 service.getReservation(reservationId)));
+    }
+
+    @GetMapping(value = "/byemail/{email}")
+    public ResponseEntity<List<ReservationDTO>> getReservationsForClientByEmail(@PathVariable String email) {
+        List<Reservation> reservations = service.getAllReservationsForClientByEmail(email);
+        return ResponseEntity.ok(mapper.mapToReservationDtoList(reservations));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
