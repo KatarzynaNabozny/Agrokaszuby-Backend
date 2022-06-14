@@ -97,7 +97,28 @@ GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/from_to_c
 24. Delete comment by subject: DELETE http://localhost:8090/agrokaszuby/backend/comment/delete/subject?subject={subject}
 25. Delete comment by email: DELETE http://localhost:8090/agrokaszuby/backend/comment/delete/email?email={emial}
 
+### Question (F10)
 
+26. Get all questions: GET http://localhost:8090/agrokaszuby/backend/question
+27. Get question by id: GET http://localhost:8090/agrokaszuby/backend/question/search/id/{id}
+28. Get question by email: GET http://localhost:8090/agrokaszuby/backend/question/search/email/{emial}
+29. Create question: POST http://localhost:8090/agrokaszuby/backend/question \
+    &nbsp;&nbsp;Example Body:
+```
+    {
+        "questionId": null,
+        "fromName": "Kasia",
+        "email": "knnabozny@gmail.com",
+        "content": "I really liked to stay in Agrokaszuby",
+        "subject": "Soon",
+        "date": [2022,6,14,10,0]
+    }
+```
+30. Update question: PUT http://localhost:8090/agrokaszuby/backend/question
+31. Delete question by id: DELETE http://localhost:8090/agrokaszuby/backend/question/{id}
+32. Delete question by id: DELETE http://localhost:8090/agrokaszuby/backend/question/delete/subject_email?subject={subject}&email={email}
+33. Delete question by subject: DELETE http://localhost:8090/agrokaszuby/backend/question/delete/subject?subject={subject}
+34. Delete question by email: DELETE http://localhost:8090/agrokaszuby/backend/question/delete/email?email={emial}
 
 ## 3. SCHEDULER (Sending all reservations report F7)
 Here is how this report looks like on the mailbox:
