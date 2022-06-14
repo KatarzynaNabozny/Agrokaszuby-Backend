@@ -13,6 +13,7 @@
 * **F10** - Question feature
 * **F11** - Comment feature
 * **F12** - Comment Log feature
+* **F13** - Question Log feature
 
 #### GitHub repos
 
@@ -138,6 +139,22 @@ GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/from_to_c
   }
 ```
 
+### Question Log (F13)
+
+39. GET http://localhost:8090/agrokaszuby/backend/question_log
+40. GET http://localhost:8090/agrokaszuby/backend/question_log/{id}
+41. DELETE http://localhost:8090/agrokaszuby/backend/question_log/{id}
+42. POST http://localhost:8090/agrokaszuby/backend/question_log \
+    &nbsp;&nbsp;Example Body:
+```
+  {
+	"questionLogId": null,
+	"email": "knnabozny@gmail.com",
+    "event": "SAVE",
+    "successful": "true",
+    "date": [2022,6,14,10,0]
+  }
+```
 
 ## 3. SCHEDULER (Sending all reservations report F7)
 Here is how this report looks like on the mailbox:

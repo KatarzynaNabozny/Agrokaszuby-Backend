@@ -33,4 +33,9 @@ class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleCommentLogNotFoundException(CommentLogNotFoundException exception) {
         return new ResponseEntity<>("Comment log not exists", HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(QuestionLogNotFoundException.class)
+    public ResponseEntity<Object> handleCommentLogNotFoundException(QuestionLogNotFoundException exception) {
+        return new ResponseEntity<>("Comment log not exists", HttpStatus.BAD_REQUEST);
+    }
 }
