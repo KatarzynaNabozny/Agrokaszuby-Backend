@@ -12,6 +12,7 @@
 * **F9** - Currency exchange REST API
 * **F10** - Question feature
 * **F11** - Comment feature
+* **F12** - Comment Log feature
 
 #### GitHub repos
 
@@ -119,6 +120,24 @@ GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/from_to_c
 32. Delete question by id: DELETE http://localhost:8090/agrokaszuby/backend/question/delete/subject_email?subject={subject}&email={email}
 33. Delete question by subject: DELETE http://localhost:8090/agrokaszuby/backend/question/delete/subject?subject={subject}
 34. Delete question by email: DELETE http://localhost:8090/agrokaszuby/backend/question/delete/email?email={emial}
+
+### Comment Log (F12)
+
+35. GET http://localhost:8090/agrokaszuby/backend/comment_log
+36. GET http://localhost:8090/agrokaszuby/backend/comment_log/{id}
+37. DELETE http://localhost:8090/agrokaszuby/backend/comment_log/{id}
+38. POST http://localhost:8090/agrokaszuby/backend/comment_log \
+    &nbsp;&nbsp;Example Body:
+```
+  {
+	"commentLogId": null,
+	"email": "knnabozny@gmail.com",
+    "event": "SAVE",
+    "successful": "true",
+    "date": [2022,6,14,10,0]
+  }
+```
+
 
 ## 3. SCHEDULER (Sending all reservations report F7)
 Here is how this report looks like on the mailbox:
