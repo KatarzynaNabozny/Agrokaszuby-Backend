@@ -14,6 +14,7 @@
 * **F11** - Comment feature
 * **F12** - Comment Log feature
 * **F13** - Question Log feature
+* **F14** - Reservation Log feature
 
 #### GitHub repos
 
@@ -131,11 +132,11 @@ GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/from_to_c
     &nbsp;&nbsp;Example Body:
 ```
   {
-	"commentLogId": null,
-	"email": "knnabozny@gmail.com",
-    "event": "SAVE",
-    "successful": "true",
-    "date": [2022,6,14,10,0]
+        "commentLogId": null,
+        "email": "knnabozny@gmail.com",
+        "event": "SAVE",
+        "successful": "true",
+        "date": [2022,6,14,10,0]
   }
 ```
 
@@ -148,11 +149,28 @@ GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/from_to_c
     &nbsp;&nbsp;Example Body:
 ```
   {
-	"questionLogId": null,
-	"email": "knnabozny@gmail.com",
-    "event": "SAVE",
-    "successful": "true",
-    "date": [2022,6,14,10,0]
+        "questionLogId": null,
+        "email": "knnabozny@gmail.com",
+        "event": "SAVE",
+        "successful": "true",
+        "date": [2022,6,14,10,0]
+  }
+```
+
+### Reservation Log (F14)
+
+43. GET http://localhost:8090/agrokaszuby/backend/reservation_log
+44. GET http://localhost:8090/agrokaszuby/backend/reservation_log/{id}
+45. DELETE http://localhost:8090/agrokaszuby/backend/reservation_log/{id}
+46. POST http://localhost:8090/agrokaszuby/backend/reservation_log \
+    &nbsp;&nbsp;Example Body:
+```
+  {
+        "reservationLogId": null,
+        "email": "knnabozny@gmail.com",
+        "event": "SAVE",
+        "successful": "true",
+        "date": [2022,6,14,10,0]
   }
 ```
 
