@@ -1,4 +1,4 @@
-package com.agrokaszuby.backend;
+package com.agrokaszuby.backend.scheduler;
 
 import com.agrokaszuby.backend.config.AdminConfig;
 import com.agrokaszuby.backend.domain.Mail;
@@ -19,7 +19,7 @@ public class EmailScheduler {
     private final SimpleEmailService simpleEmailService;
     private final AdminConfig adminConfig;
 
-    @Scheduled(cron = "* * 10 * * *")
+    @Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
         simpleEmailService.send(
                 Mail.builder()

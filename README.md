@@ -10,6 +10,8 @@
 * **F7** - [Backend] Scheduler - sending email with all reservations each day
 * **F8** - Application instruction
 * **F9** - Currency exchange REST API
+* **F10** - Question feature
+* **F11** - Comment feature
 
 #### GitHub repos
 
@@ -18,7 +20,7 @@
 ------
 Port: http://localhost:8090 
 
-## 1. REST ENDPOINTS (F1, F2)
+## 1. REST ENDPOINTS (F1, F2, F10, F11)
 
 ### Reservation
 1. Get all reservations: GET http://localhost:8090/agrokaszuby/backend/reservation
@@ -32,9 +34,9 @@ Port: http://localhost:8090
         "startDate": [2022,10,22,10,0],
         "endDate": [2022,10,26,13,0],
         "firstName": "Katarzyna",
-        "lastName": "Skelnik",
+        "lastName": "Nowak",
         "phoneNumber": "4564646",
-        "city": "Przysieki 405",
+        "city": "Kraków 90",
         "postalCode": "31-207",
         "street": "Toki",
         "email": "kodilla.katarzyna.dev@yandex.ru",
@@ -71,6 +73,31 @@ DELETE http://localhost:8090/agrokaszuby/backend/reservation?email=kodilla.katar
 15. Get currency exchange by date: GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/date?date=2022-10-26
 16. Get currency exchange by fromCurrency, toCurrency and date: \
 GET http://localhost:8090/agrokaszuby/backend/currency_exchange/search/from_to_currency_date?fromCurrency=PLN&toCurrency=USD&date=2022-10-26
+
+### Comment (F11)
+
+17. Get all comments: GET http://localhost:8090/agrokaszuby/backend/comment
+18. Get comment by id: GET http://localhost:8090/agrokaszuby/backend/comment/search/id/{id}
+19. Get comment by email: GET http://localhost:8090/agrokaszuby/backend/comment/search/email/{emial}
+20. Create comment: POST http://localhost:8090/agrokaszuby/backend/comment \
+    &nbsp;&nbsp;Example Body:
+```
+    {
+        "commentId": null,
+        "fromName": "Kasia",
+        "email": "knnabozny@gmail.com",
+        "content": "I really liked to stay in Agrokaszuby",
+        "subject": "Soon",
+        "date": [2022,6,14,10,0]
+    }
+```
+21. Update comment: PUT http://localhost:8090/agrokaszuby/backend/comment 
+22. Delete comment by id: DELETE http://localhost:8090/agrokaszuby/backend/comment/{id}
+23. Delete comment by id: DELETE http://localhost:8090/agrokaszuby/backend/comment/delete/subject_email?subject={subject}&email={email}
+24. Delete comment by subject: DELETE http://localhost:8090/agrokaszuby/backend/comment/delete/subject?subject={subject}
+25. Delete comment by email: DELETE http://localhost:8090/agrokaszuby/backend/comment/delete/email?email={emial}
+
+
 
 ## 3. SCHEDULER (Sending all reservations report F7)
 Here is how this report looks like on the mailbox:

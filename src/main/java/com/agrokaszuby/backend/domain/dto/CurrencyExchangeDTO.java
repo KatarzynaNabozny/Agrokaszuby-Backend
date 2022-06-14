@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @Getter
 @Builder
 public class CurrencyExchangeDTO {
-
     private Long currencyExchangeId;
     private String fromCurrency;
     private String toCurrency;

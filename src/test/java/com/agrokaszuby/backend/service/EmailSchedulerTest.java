@@ -2,7 +2,7 @@ package com.agrokaszuby.backend.service;
 
 import com.agrokaszuby.backend.config.AdminConfig;
 import com.agrokaszuby.backend.domain.Mail;
-import com.agrokaszuby.backend.EmailScheduler;
+import com.agrokaszuby.backend.scheduler.EmailScheduler;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
