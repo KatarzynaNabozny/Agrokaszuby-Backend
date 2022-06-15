@@ -15,6 +15,7 @@
 * **F12** - Comment Log feature
 * **F13** - Question Log feature
 * **F14** - Reservation Log feature
+* **F15** - Test coverage
 
 #### GitHub repos
 
@@ -179,7 +180,10 @@ Here is how this report looks like on the mailbox:
 
 ![img.png](src/main/resources/static/scheduler_email.png)
 
+## 5. TESTS - Coverage 65% (F15)
+![img.png](src/main/resources/static/test_coverage.png)
 
+## HOW TO RUN APPLICATION
 ##### To run Backend needed DB MySql schema with name : '**agrokaszuby**'. Then you can run **BackendApplication.java**
 
 ------
